@@ -11,6 +11,3 @@ npm run dev
 3.
 Abrir logal em [http://localhost:3000]
 ```
-
-### Suporte:
-https://heroicons.com/

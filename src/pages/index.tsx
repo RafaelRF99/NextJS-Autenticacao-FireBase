@@ -1,4 +1,4 @@
-import Layout from "@/components/Template/Layout";
+import Layout from "../components/Template/Layout";
 
 export default function Home() {
   return (
