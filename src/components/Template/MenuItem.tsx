@@ -12,10 +12,11 @@ export default function MenuItem(props: MenuItemProps) {
 
     function renderizar() {
         return (
-            <div className={`w-20 h-20 flex flex-col justify-center items-center ${props.className}`}>
+            <div className={`w-24 h-20 flex flex-col justify-center items-center 
+             text-gray-600 ${props.className}`}>
                 {props.icone}
                 <span className={`
-            text-xs font-light text-gray-600
+            text-xs font-light 
             `}>
                     {props.texto}
                 </span>

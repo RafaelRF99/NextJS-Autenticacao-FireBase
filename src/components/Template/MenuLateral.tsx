@@ -8,17 +8,19 @@ export default function MenuLateral() {
             <div className={`
             flex flex-col items-center justify-center
             bg-gradient-to-r from-indigo-500 to-purple-600
-            h-20 w-20
+            h-20 w-24
             `}>
                 <Logo />
             </div>
-            <ul className={`flex-grow`}>
+            <ul className={`flex-grow flex flex-col items-center`}>
                 <MenuItem url="/" texto="Início" icone={IconeCasa} />
                 <MenuItem url="/ajustes" texto="Ajustes" icone={IconeAjustes} />
                 <MenuItem url="/notificacoes" texto="Notificações" icone={IconeSino} />
             </ul>
             <ul>
-                <MenuItem onClick={() => console.log("Logout")} texto="Sair" icone={IconeLogout} />
+                <MenuItem className={`text-red-600 hover:bg-red-400 hover:text-white`}
+                 texto="Sair" icone={IconeLogout} 
+                onClick={() => console.log("Logout")} />
             </ul>
         </aside>
     )
