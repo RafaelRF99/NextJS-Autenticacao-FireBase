@@ -3,6 +3,7 @@ export default function Logo() {
         <div className={`
         bg-white h-10 w-10 rounded-full
         flex flex-col items-center justify-center
+        dark:bg-black
         `}>
             <div className={`h-3 w-3 rounded-full bg-red-600`} />
             <div className="flex gap-1">
