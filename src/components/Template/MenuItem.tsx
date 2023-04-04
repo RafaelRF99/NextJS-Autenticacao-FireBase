@@ -13,7 +13,7 @@ export default function MenuItem(props: MenuItemProps) {
     function renderizar() {
         return (
             <div className={`w-24 h-20 flex flex-col justify-center items-center 
-             text-gray-600 ${props.className}`}>
+             text-gray-600 dark:text-gray-200 ${props.className}`}>
                 {props.icone}
                 <span className={`
             text-xs font-light 
@@ -25,7 +25,7 @@ export default function MenuItem(props: MenuItemProps) {
     }
 
     return (
-        <li onClick={props.onClick} className={` hover:bg-gray-100 cursor-pointer `}>
+        <li onClick={props.onClick} className={` hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer `}>
             {props.url ? (
                 <Link href={props.url} >
                     {renderizar()}
