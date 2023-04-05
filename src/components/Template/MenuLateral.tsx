@@ -9,8 +9,8 @@ export default function MenuLateral() {
         dark:bg-gray-900 `}>
             <div className={`
             flex flex-col items-center justify-center
-            bg-gradient-to-r from-indigo-500 to-purple-600
-            dark:from-slate-500 dark:to-gray-700
+            bg-gradient-to-bl from-indigo-500 to-purple-600
+            dark:from-slate-700 dark:to-gray-950
             h-20 w-24
             `}>
                 <Logo />
