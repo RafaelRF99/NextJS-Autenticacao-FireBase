@@ -3,6 +3,7 @@ import firebase from "../../firebase/config";
 import IUsuario from "@/model/IUsuario";
 import { useState } from "react";
 import Router from "next/router";
+import Cookies from 'js-cookie';
 
 interface AuthContextProps {
     usuario?: IUsuario
@@ -23,19 +24,42 @@ async function usuarioNormalizado(usuarioFirebase: firebase.User): Promise<IUsua
     }
 }
 
+function gerenciarCookie(logado: boolean) {
+    if (logado) {
+        Cookies.set('admin-template-auth', logado, {
+            expires: 10
+        })
+    } else {
+        Cookies.remove('admin-template-auth')
+    }
+}
+
 
 export function AuthProvider(props: any) {
-    const [usuario, setUsuario] = useState<IUsuario>()
+    const [carregando, setCarregando] = useState(true)
+    const [usuario, setUsuario] = useState<IUsuario>(null)
+
+    async function configurarSessao(usuarioFirebase: firebase.User) {
+        if (usuarioFirebase?.email) {
+            const usuario = await usuarioNormalizado(usuarioFirebase)
+            setUsuario(usuario)
+            gerenciarCookie(true)
+            setCarregando(false)
+            return usuario.email
+        } else {
+            setUsuario(null)
+            gerenciarCookie(false)
+            setCarregando(false)
+            return false
+        }
+    }
 
     async function loginGoogle() {
         const res = await firebase.auth().signInWithPopup(
             new firebase.auth.GoogleAuthProvider()
         )
-        if (res.user?.email) {
-            const usuario = await usuarioNormalizado(res.user)
-            setUsuario(usuario);
-            Router.push('/')
-        }
+        configurarSessao(res.user)
+        Router.push('/')
     }
 
     return (
@@ -46,5 +70,7 @@ export function AuthProvider(props: any) {
             {props.children}
         </AuthContext.Provider>
     )
+
 }
+
 export default AuthContext;
