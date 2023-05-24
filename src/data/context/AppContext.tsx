@@ -9,7 +9,7 @@ type Tema = "dark" | ''
 
 interface AppContextProps {
     tema?: Tema
-    alternarTema?(): any
+    alternarTema?: () => void
 }
 
 const AppContext = createContext<AppContextProps>({})
